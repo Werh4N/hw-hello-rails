@@ -1,3 +1,29 @@
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  .sorted-asc {
+    background-color: #006400; /* Light green for ascending */
+  }
+  .sorted-desc {
+    background-color: #8B0000; /* Light red for descending */
+  }
+  .non-interactive {
+    cursor: default;
+  }
+  .header {
+    font-weight: bold;
+  }
+</style>
+
+
+
 <p>
   <%= link_to "New movie", new_movie_path %>
 </p>
@@ -5,7 +31,7 @@
 <table>
   <thead>
     <tr>
-      <th>
+      <th class="<%= 'sorted-asc' if @sort_by == 'title' && @sort_order == 'asc' %><%= 'sorted-desc' if @sort_by == 'title' && @sort_order == 'desc' %> header">
         Title
         <% if @sort_by == 'title' %>
           <% if @sort_order == 'asc' %>
@@ -18,7 +44,7 @@
         <% end %>
 
       </th>
-      <th>
+      <th class="<%= 'sorted-asc' if @sort_by == 'rating' && @sort_order == 'asc' %><%= 'sorted-desc' if @sort_by == 'rating' && @sort_order == 'desc' %> header">
         Rating
         <% if @sort_by == 'rating' %>
           <% if @sort_order == 'asc' %>
@@ -30,7 +56,7 @@
           <%= link_to "⬆️", movies_path(sort_by: 'rating', sort_order: 'asc') %>
         <% end %>
       </th>
-      <th>
+      <th class="<%= 'sorted-asc' if @sort_by == 'release_date' && @sort_order == 'asc' %><%= 'sorted-desc' if @sort_by == 'release_date' && @sort_order == 'desc' %> header">
         Release Date
         <% if @sort_by == 'release_date' %>
           <% if @sort_order == 'asc' %>
