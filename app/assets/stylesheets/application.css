@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+table {
+  width: 100%;
+}
+
+.highlight.asc::after {
+  content: " ↑";
+}
+
+.highlight.desc::after {
+  content: " ↓";
+}
+
+.highlight {
+  background-color: #f0f0f0; /* Light grey background for the sorted column */
+}

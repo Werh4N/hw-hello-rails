@@ -1,0 +1,57 @@
+<p>
+  <%= link_to "New movie", new_movie_path %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Title
+        <% if @sort_by == 'title' %>
+          <% if @sort_order == 'asc' %>
+            <%= link_to "⬆️", movies_path(sort_by: 'title', sort_order: 'desc') %>
+          <% else %>
+            <%= link_to "⬇️", movies_path(sort_by: 'title', sort_order: 'asc') %>
+          <% end %>
+        <% else %>
+          <%= link_to "⬆️", movies_path(sort_by: 'title', sort_order: 'asc') %>
+        <% end %>
+
+      </th>
+      <th>
+        Rating
+        <% if @sort_by == 'rating' %>
+          <% if @sort_order == 'asc' %>
+            <%= link_to "⬆️", movies_path(sort_by: 'rating', sort_order: 'desc') %>
+          <% else %>
+            <%= link_to "⬇️", movies_path(sort_by: 'rating', sort_order: 'asc') %>
+          <% end %>
+        <% else %>
+          <%= link_to "⬆️", movies_path(sort_by: 'rating', sort_order: 'asc') %>
+        <% end %>
+      </th>
+      <th>
+        Release Date
+        <% if @sort_by == 'release_date' %>
+          <% if @sort_order == 'asc' %>
+            <%= link_to "⬆️", movies_path(sort_by: 'release_date', sort_order: 'desc') %>
+          <% else %>
+            <%= link_to "⬇️", movies_path(sort_by: 'release_date', sort_order: 'asc') %>
+          <% end %>
+        <% else %>
+          <%= link_to "⬆️", movies_path(sort_by: 'release_date', sort_order: 'asc') %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date.to_s %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
